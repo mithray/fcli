@@ -41,6 +41,22 @@ function createProgram(commandsFilePath) {
             .description(command.description)
             .action(action)
         }
+        if (command.options){
+          for (let i = 0; i < command.options.length; i++){
+            const option = command.options[i]
+            const option_arr = []
+            option_arr.push(option.name)
+            if (option.description) {
+              option_arr.push(option.description)
+            }
+            if (option.default) {
+              option_arr.push(option.default)
+            }
+              console.log(option_arr)
+            program.option(...option_arr)
+
+          }
+        }
     })
     return program
 }
